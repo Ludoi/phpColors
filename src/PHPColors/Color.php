@@ -807,15 +807,18 @@ class Color
      */
     static public function nearestNamedColor(string $color): string
     {
-        $colorInt = hexdec(self::sanitizeHex($color));
-        $min = hexdec('FFFFFF');
+        $min = 3 * pow(256, 2);
+        $r = hexdec(substr($color, 0, 2));
+        $g = hexdec(substr($color, 2, 2));
+        $b = hexdec(substr($color, 4, 2));
         $minName = '';
         foreach (self::$colors as $name => $colorHex) {
-            $namedColorInt = hexdec($colorHex);
-            $difference = abs($namedColorInt - $colorInt);
-            if ($difference < $min) {
+            $error = pow(hexdec(substr($color, 0, 2)) - $r, 2) +
+                pow(hexdec(substr($color, 2, 2)) - $g, 2) +
+                pow(hexdec(substr($color, 4, 2)) - $b, 2);
+            if ($error < $min) {
                 $minName = $name;
-                $min = $difference;
+                $min = $error;
             }
             if ($min == 0) {
                 break;
