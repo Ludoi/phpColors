@@ -812,10 +812,10 @@ class Color
         $g = hexdec(substr($color, 2, 2));
         $b = hexdec(substr($color, 4, 2));
         $minName = '';
-        foreach (self::$colors as $name => $colorHex) {
-            $error = pow(hexdec(substr($color, 0, 2)) - $r, 2) +
-                pow(hexdec(substr($color, 2, 2)) - $g, 2) +
-                pow(hexdec(substr($color, 4, 2)) - $b, 2);
+        foreach (self::$colors as $name => $namedColor) {
+            $error = pow(hexdec(substr($namedColor, 0, 2)) - $r, 2) +
+                pow(hexdec(substr($namedColor, 2, 2)) - $g, 2) +
+                pow(hexdec(substr($namedColor, 4, 2)) - $b, 2);
             if ($error < $min) {
                 $minName = $name;
                 $min = $error;
