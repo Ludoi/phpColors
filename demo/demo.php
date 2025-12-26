@@ -4,9 +4,9 @@
     <title>phpColors Demo</title>
     <?php
 
-    require_once __DIR__ . '/../src/Mexitek/PHPColors/Color.php';
+    require_once __DIR__ . '/../src/PHPColors/Color.php';
 
-    use Mexitek\PHPColors\Color;
+    use Ludoi\PHPColors\Color;
 
     // Use different colors to test
     $myBlue = new Color("#336699");
